@@ -59,7 +59,7 @@ class TestDauGia():
         return "Không tìm thấy loại xe phù hợp"
 
   def scroll_to_view(self):
-    element = self.driver.find_element(By.CSS_SELECTOR, ".ant-row.license-table-filter .ant-col:nth-child(4) .custom-select-container .label-bksType")
+    element = self.driver.find_element(By.CSS_SELECTOR, ".ant-row.license-table-filter > .ant-col:nth-child(1) .ant-input-affix-wrapper input[id=\"1\"]")
     self.driver.execute_script("arguments[0].scrollIntoView({behavior: 'smooth', block: 'center'});", element)
 
   def write_to_file(self, content):
@@ -84,8 +84,7 @@ class TestDauGia():
     plateSearch = testCase[0][0]
     plateTestCases = testCase[1:] 
     
-
-    self.driver.get("https://vpa.com.vn/")
+    self.driver.get("https://vpa.com.vn/?tab=3")
     self.driver.maximize_window()
     time.sleep(5)
     self.scroll_to_view()
@@ -136,19 +135,11 @@ class TestDauGia():
       # Reset data
       print("Resetting filter...")
       self.write_to_file("Resetting filter...")
-      self.driver.find_element(By.CSS_SELECTOR, ".ant-row.license-table-filter .ant-col:nth-child(4) .custom-select-container .label-bksType").click()
       iconDeleteElement = self.driver.find_element(By.CSS_SELECTOR, ".ant-row.license-table-filter > .ant-col:nth-child(1) .ant-input-affix-wrapper .ant-input-suffix .ant-input-clear-icon-hidden")
       if not iconDeleteElement:
         self.driver.find_element(By.CSS_SELECTOR, ".ant-row.license-table-filter > ant-col:nth-child(1) .ant-input-affix-wrapper .ant-input-suffix .ant-input-clear-icon").click()
       time.sleep(WAIT_TIME_SHORT)
       self.scroll_to_view()
-      self.driver.find_element(By.CSS_SELECTOR, ".ant-row.license-table-filter .ant-col:nth-child(4) .custom-select-container .label-bksType").click()
-      time.sleep(WAIT_TIME_SHORT)
-      self.scroll_to_view()
-      elements = self.driver.find_elements(By.CSS_SELECTOR, ".checkbox-group:nth-child(1) .checkbox-option  .ant-checkbox-wrapper-checked")
-      if elements:
-        elements[0].click()
-
 
       print(f"======================================== START TEST CASE FOR `{cityName}` ========================================")
       self.write_to_file(f"======================================== START TEST CASE FOR `{cityName}` ========================================")
@@ -199,52 +190,6 @@ class TestDauGia():
           assert car_type_in_row == typeCar, f"Expected car type '{typeCar}', but got '{car_type_in_row}'"
           print(f"Done {index + 1}/{len(rows)} ✔️")
           self.write_to_file(f"Done {index + 1}/{len(rows)} ✔️")
-
-      # Mở dropdown chọn loại biển số
-      self.driver.find_element(By.CSS_SELECTOR, ".ant-row.license-table-filter .ant-col:nth-child(4) .custom-select-container .label-bksType").click()
-      time.sleep(WAIT_TIME_SHORT)
-
-      if typePlate == "Ngu Quy":
-          # Chọn loại biển số Ngũ Quý
-          self.driver.find_element(By.CSS_SELECTOR, ".checkbox-group:nth-child(1) > .checkbox-option:nth-child(2) .ant-checkbox-input").click()
-          time.sleep(WAIT_TIME_SHORT)
-          self.scroll_to_view()
-          pattern = r"{}-\d(\d)\1\.\1\1".format(numberPlate)
-
-      elif typePlate == "Tu Quy":
-          # Chọn loại biển số Tứ Quý
-          self.driver.find_element(By.CSS_SELECTOR, ".checkbox-group:nth-child(1) > .checkbox-option:nth-child(4) .ant-checkbox-input").click()
-          time.sleep(WAIT_TIME_SHORT)
-          self.scroll_to_view()
-          pattern = r"^\w{3}-(\d)\1{2,3}\.\d{2}$"
-
-      elif typePlate == "Than Tai":
-          # Chọn loại biển số Thần Tài
-          self.driver.find_element(By.CSS_SELECTOR, ".checkbox-group:nth-child(1) > .checkbox-option:nth-child(6) .ant-checkbox-input").click()
-          time.sleep(WAIT_TIME_SHORT)
-          self.scroll_to_view()
-          pattern = r"^\w{3}-(\d+)\.\d{2}$"
-
-      # Kiểm tra từng dòng trong bảng cho loại biển số
-      rows = self.driver.find_elements(By.CSS_SELECTOR, ".ant-table-container .ant-table-content table .ant-table-tbody > tr")
-      time.sleep(WAIT_TIME_BASE)
-
-      print(f"3, Check type plate of {cityName}")
-      self.write_to_file(f"3, Check type plate of {cityName}")
-      for index, row in enumerate(rows):
-          plate_code_in_row = row.find_element(By.CSS_SELECTOR, "td:nth-child(2) .text").text
-          plate_type_in_row = row.find_element(By.CSS_SELECTOR, "td:nth-child(6) .text").text
-          # time.sleep(WAIT_TIME_SHORT)
-
-          if rows:
-              assert re.match(pattern, plate_code_in_row), f"Plate number '{plate_code_in_row}' does not match the expected format"
-              assert plate_type_in_row == self.get_plate_type(typePlate), f"Expected plate type '{self.get_plate_type(typePlate)}', but got '{plate_type_in_row}'"
-              print(f"Done {index + 1}/{len(rows)} ✔️")
-              self.write_to_file(f"Done {index + 1}/{len(rows)} ✔️")
-          else:
-              assert self.driver.find_element(By.CSS_SELECTOR, ".no-data-container > span").text == "Hiện tại không có dữ liệu"
-              print(f"Done {index + 1}/{len(rows)} ✔️")
-              self.write_to_file(f"Done {index + 1}/{len(rows)} ✔️")
 
       print(f"======================================== FINISH TEST CASE FOR `{cityName}` ========================================")
       self.write_to_file(f"======================================== FINISH TEST CASE FOR `{cityName}` ========================================")

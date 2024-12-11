@@ -90,3 +90,77 @@ Done 10/10 ✔️
 2, Check car type of Thành phố Cần Thơ
 Done 1/1 ✔️
 ======================================== FINISH TEST CASE FOR `Thành phố Cần Thơ` ========================================
+
+========================================
+======================================== START TEST CASE FOR PLATE `43A-145.03` ========================================
+Done ✔️
+======================================== FINISH TEST CASE FOR PLATE `43A-145.03` ========================================
+======================================== START TEST CASE FOR UNKNOWN PLATE ========================================
+Done ✔️
+======================================== FINISH TEST CASE FOR UNKNOWN PLATE ========================================
+Resetting filter...
+======================================== START TEST CASE FOR `Thành phố Đà Nẵng` ========================================
+1, Check city name and plate code of Thành phố Đà Nẵng
+Done 1/10 ✔️
+Done 2/10 ✔️
+Done 3/10 ✔️
+Done 4/10 ✔️
+Done 5/10 ✔️
+Done 6/10 ✔️
+Done 7/10 ✔️
+Done 8/10 ✔️
+Done 9/10 ✔️
+Done 10/10 ✔️
+2, Check car type of Thành phố Đà Nẵng
+Done 1/10 ✔️
+Done 2/10 ✔️
+Done 3/10 ✔️
+Done 4/10 ✔️
+Done 5/10 ✔️
+Done 6/10 ✔️
+Done 7/10 ✔️
+Done 8/10 ✔️
+Done 9/10 ✔️
+Done 10/10 ✔️
+======================================== FINISH TEST CASE FOR `Thành phố Đà Nẵng` ========================================
+Resetting filter...
+======================================== START TEST CASE FOR `Thành phố Hải Phòng` ========================================
+1, Check city name and plate code of Thành phố Hải Phòng
+Done 1/10 ✔️
+Done 2/10 ✔️
+Done 3/10 ✔️
+Done 4/10 ✔️
+Done 5/10 ✔️
+Done 6/10 ✔️
+Done 7/10 ✔️
+Done 8/10 ✔️
+Done 9/10 ✔️
+Done 10/10 ✔️
+2, Check car type of Thành phố Hải Phòng
+Done 1/10 ✔️
+Done 2/10 ✔️
+Done 3/10 ✔️
+Done 4/10 ✔️
+Done 5/10 ✔️
+Done 6/10 ✔️
+Done 7/10 ✔️
+Done 8/10 ✔️
+Done 9/10 ✔️
+Done 10/10 ✔️
+======================================== FINISH TEST CASE FOR `Thành phố Hải Phòng` ========================================
+Resetting filter...
+======================================== START TEST CASE FOR `Thành phố Cần Thơ` ========================================
+1, Check city name and plate code of Thành phố Cần Thơ
+Done 1/10 ✔️
+Done 2/10 ✔️
+Done 3/10 ✔️
+Done 4/10 ✔️
+Done 5/10 ✔️
+Done 6/10 ✔️
+Done 7/10 ✔️
+Done 8/10 ✔️
+Done 9/10 ✔️
+Done 10/10 ✔️
+2, Check car type of Thành phố Cần Thơ
+Done 1/1 ✔️
+======================================== FINISH TEST CASE FOR `Thành phố Cần Thơ` ========================================
