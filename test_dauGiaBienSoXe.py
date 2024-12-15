@@ -186,8 +186,12 @@ class TestDauGia():
       self.write_to_file(f"2, Check car type of {cityName}")
       for index, row in enumerate(rows):
           car_type_in_row = row.find_element(By.CSS_SELECTOR, "td:nth-child(5) .text").text
+          plate_code_in_row = row.find_element(By.CSS_SELECTOR, "td:nth-child(2) .text").text
+          
           # Kiểm tra loại xe
           assert car_type_in_row == typeCar, f"Expected car type '{typeCar}', but got '{car_type_in_row}'"
+          # Kiểm tra mã đầu biển số
+          assert numberPlate in plate_code_in_row, f"Expected plate code containing '{numberPlate}', but got '{plate_code_in_row}'"
           print(f"Done {index + 1}/{len(rows)} ✔️")
           self.write_to_file(f"Done {index + 1}/{len(rows)} ✔️")
 
